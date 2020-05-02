@@ -12,8 +12,8 @@ enum class SquareType { Go, Property, Chance, CommunityChest, Florida, GoToFlori
 class MonopolyBoardSquare: public QObject, public QGraphicsItem {
     Q_OBJECT
     public:
-        MonopolyBoardSquare(int x, int y, SquareType type, std::string name, int price);
-        MonopolyBoardSquare(int x, int y, SquareType type, QImage image, int price);
+        MonopolyBoardSquare(int x, int y, std::string name, int price);
+        MonopolyBoardSquare(int x, int y, SquareType type, QImage image);
 
         QRectF boundingRect() const override;
         QPainterPath shape() const override;
