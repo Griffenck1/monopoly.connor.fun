@@ -1,10 +1,7 @@
 #ifndef MONOPOLYBOARD_H
 #define MONOPOLYBOARD_H
 
-#include <iostream>
-#include <QColor>
-#include <QGraphicsItem>
-#include <QtWidgets>
+#include "monopolyboardsquare.h"
 
 
 class MonopolyBoard: public QObject, public QGraphicsItem {

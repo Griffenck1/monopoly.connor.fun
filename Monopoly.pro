@@ -18,10 +18,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     monopolyboard.cpp \
+    monopolyboardsquare.cpp \
     monopolywindow.cpp
 
 HEADERS += \
     monopolyboard.h \
+    monopolyboardsquare.h \
     monopolywindow.h
 
 FORMS += \

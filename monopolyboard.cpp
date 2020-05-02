@@ -6,7 +6,7 @@ MonopolyBoard::MonopolyBoard()
 }
 
 QRectF MonopolyBoard::boundingRect() const{
-    return(QRectF(0, 0, 700, 700));
+    return(QRectF(0, 0, 875, 875));
 }
 
 QPainterPath MonopolyBoard::shape() const{
