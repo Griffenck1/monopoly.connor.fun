@@ -19,12 +19,14 @@ SOURCES += \
     main.cpp \
     monopolyboard.cpp \
     monopolyboardsquare.cpp \
-    monopolywindow.cpp
+    monopolywindow.cpp \
+    player.cpp
 
 HEADERS += \
     monopolyboard.h \
     monopolyboardsquare.h \
-    monopolywindow.h
+    monopolywindow.h \
+    player.h
 
 FORMS += \
     monopolywindow.ui

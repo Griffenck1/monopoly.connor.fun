@@ -55,6 +55,13 @@ MonopolyBoard::MonopolyBoard()
     }
 
     current->next = board_squares_head_;
+
+    players_.push_back(new Player(1));
+    players_.push_back(new Player(2));
+    players_[0]->setLocation(board_squares_head_);
+    players_[1]->setLocation(board_squares_head_);
+
+
 }
 
 QRectF MonopolyBoard::boundingRect() const{
@@ -79,5 +86,9 @@ void MonopolyBoard::paint(QPainter *painter, const QStyleOptionGraphicsItem *ite
     for(int i = 0; i < 24; i++){
         current->square_->paint(painter, item, widget);
         current = current->next;
+    }
+
+    for(Player* p : players_){
+        p->paint(painter, item, widget);
     }
 }

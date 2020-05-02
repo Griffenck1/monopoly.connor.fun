@@ -6,6 +6,7 @@
 #include <QGraphicsItem>
 #include <QtWidgets>
 #include <string>
+#include <vector>
 
 enum class SquareType { Go, Property, StudentDebt, GetOutOfFloridaFree, Florida, GoToFlorida, SegFault };
 
@@ -19,6 +20,9 @@ class MonopolyBoardSquare: public QObject, public QGraphicsItem {
         QPainterPath shape() const override;
 
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *item, QWidget *widget) override;
+
+        int get_x(){return x_;}
+        int get_y(){return y_;}
 
     private:
         std::string name_;

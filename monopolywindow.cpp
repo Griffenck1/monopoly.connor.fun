@@ -16,10 +16,7 @@ MonopolyWindow::MonopolyWindow(QWidget *parent)
 
     MonopolyBoard *b = new MonopolyBoard();
 
-
-
     monopoly_board_view->addItem(b);
-
 }
 
 MonopolyWindow::~MonopolyWindow()

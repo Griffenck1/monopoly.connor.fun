@@ -1,15 +1,7 @@
 #ifndef MONOPOLYBOARD_H
 #define MONOPOLYBOARD_H
 
-#include "monopolyboardsquare.h"
-
-struct Node{
-    Node(MonopolyBoardSquare* square){
-        square_ = square;
-    }
-    MonopolyBoardSquare* square_;
-    Node* next;
-};
+#include "player.h"
 
 class MonopolyBoard: public QObject, public QGraphicsItem {
 
@@ -39,6 +31,8 @@ class MonopolyBoard: public QObject, public QGraphicsItem {
         };
 
         Node* board_squares_head_;
+
+        std::vector<Player*> players_;
 };
 
 #endif // MONOPOLYBOARD_H
