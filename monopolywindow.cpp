@@ -16,7 +16,13 @@ MonopolyWindow::MonopolyWindow(QWidget *parent)
 
     MonopolyBoard *b = new MonopolyBoard();
 
-    monopoly_board_view->addItem(b);
+
+    MonopolyBoardSquare *s = new MonopolyBoardSquare(0, 0, SquareType::Property, "Cabin", 200);
+
+
+
+    monopoly_board_view->addItem(s);
+
 }
 
 MonopolyWindow::~MonopolyWindow()

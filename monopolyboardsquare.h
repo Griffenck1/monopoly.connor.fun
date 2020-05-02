@@ -5,14 +5,15 @@
 #include <QColor>
 #include <QGraphicsItem>
 #include <QtWidgets>
+#include <string>
 
 enum class SquareType { Go, Property, Chance, CommunityChest, Florida, GoToFlorida, SegFault };
 
 class MonopolyBoardSquare: public QObject, public QGraphicsItem {
     Q_OBJECT
     public:
-        MonopolyBoardSquare(int x, int y, SquareType type);
-        MonopolyBoardSquare(int x, int y, SquareType type, QImage image);
+        MonopolyBoardSquare(int x, int y, SquareType type, std::string name, int price);
+        MonopolyBoardSquare(int x, int y, SquareType type, QImage image, int price);
 
         QRectF boundingRect() const override;
         QPainterPath shape() const override;
@@ -20,12 +21,15 @@ class MonopolyBoardSquare: public QObject, public QGraphicsItem {
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *item, QWidget *widget) override;
 
     private:
+        std::string name_;
         bool image_exists_;
         QImage image_;
         SquareType type_;
         int x_;
         int y_;
+        int price_;
         int owner_;
+        QColor color_;
 };
 
 #endif // MONOPOLYBOARDSQAURE_H
