@@ -7,7 +7,7 @@
 #include <QtWidgets>
 #include <string>
 
-enum class SquareType { Go, Property, Chance, CommunityChest, Florida, GoToFlorida, SegFault };
+enum class SquareType { Go, Property, StudentDebt, GetOutOfFloridaFree, Florida, GoToFlorida, SegFault };
 
 class MonopolyBoardSquare: public QObject, public QGraphicsItem {
     Q_OBJECT

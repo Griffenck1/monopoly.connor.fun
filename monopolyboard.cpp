@@ -13,10 +13,18 @@ MonopolyBoard::MonopolyBoard()
     for(int i = 1; i < 24; i++){
         //It just so happens that all of my squares requiring images are divisible by 3
         if((i == 3) | (i == 15)){
-
+            filename = "/home/griffen/Programming/CSCI_3010/HW5/monopoly.connor.fun/images/StudentDebt.bmp";
+            qs = filename.c_str();
+            QImage student_debt = QImage(qs);
+            current->next = new Node(new MonopolyBoardSquare(board_placements_[i].first, board_placements_[i].second, SquareType::StudentDebt, student_debt));
+            current = current->next;
         }
         else if((i == 9) | (i == 21)){
-
+            filename = "/home/griffen/Programming/CSCI_3010/HW5/monopoly.connor.fun/images/GetOutFlorida.bmp";
+            qs = filename.c_str();
+            QImage go_florida = QImage(qs);
+            current->next = new Node(new MonopolyBoardSquare(board_placements_[i].first, board_placements_[i].second, SquareType::Florida, go_florida));
+            current = current->next;
         }
         else if(i == 6){
             filename = "/home/griffen/Programming/CSCI_3010/HW5/monopoly.connor.fun/images/InFlorida.bmp";
