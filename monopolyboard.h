@@ -15,6 +15,8 @@ class MonopolyBoard: public QObject, public QGraphicsItem {
 
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *item, QWidget *widget) override;
 
+        std::vector<Player*> get_players(){return players_;}
+
     private:
         //Locations names is made a global variable for ease of access
         const std::string location_names_[16] = {

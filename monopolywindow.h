@@ -2,6 +2,7 @@
 #define MONOPOLYWINDOW_H
 
 #include <QMainWindow>
+#include "monopolyboard.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MonopolyWindow; }
@@ -15,7 +16,20 @@ public:
     MonopolyWindow(QWidget *parent = nullptr);
     ~MonopolyWindow();
 
+private slots:
+    void on_rollDiceButton_clicked();
+    void RollDiceHelper();
+    void on_endTurnButton_pressed();
+    void SetCashLabels();
+
 private:
     Ui::MonopolyWindow *ui;
+
+    MonopolyBoard *board_;
+
+    int moves_to_go_;
+    int current_player_id_;
+
+    bool can_roll_;
 };
 #endif // MONOPOLYWINDOW_H

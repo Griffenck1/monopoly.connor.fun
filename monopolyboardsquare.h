@@ -8,6 +8,11 @@
 #include <string>
 #include <vector>
 
+//These three are used for random #number generation
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
 enum class SquareType { Go, Property, StudentDebt, GetOutOfFloridaFree, Florida, GoToFlorida, SegFault };
 
 class MonopolyBoardSquare: public QObject, public QGraphicsItem {

@@ -2,7 +2,7 @@
 
 Player::Player(int id){
     id_ = id;
-    money_ = 2000;
+    cash_ = 2000;
 }
 
 QRectF Player::boundingRect() const{
