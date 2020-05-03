@@ -70,6 +70,11 @@ void MonopolyWindow::on_rollDiceButton_clicked(){
 }
 
 void MonopolyWindow::on_endTurnButton_pressed(){
+    board_->get_players()[current_player_id_ - 1]->ReactToLocation();
+    SetCashLabels();
+    if(board_->get_players()[current_player_id_-1]->get_cash() < 0){
+        //delete board_;
+    }
     if(current_player_id_ == 1){
         current_player_id_ = 2;
         can_roll_ = true;
@@ -98,9 +103,6 @@ void MonopolyWindow::on_buyButton_pressed(){
         board_->update();
         current->DecrementCash(current->get_location()->square_->get_price());
         SetCashLabels();
-    }
-    else{
-
     }
 }
 

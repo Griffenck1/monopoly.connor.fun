@@ -36,10 +36,13 @@ class Player : public QObject, public QGraphicsItem{
 
         Node* get_location(){return location_;}
 
+        void ReactToLocation();
+
     private:
         Node* location_;
         int id_;
         int cash_;
+        int get_out_of_florida_free_;
 };
 
 #endif // PLAYER_H

@@ -32,11 +32,15 @@ class MonopolyBoardSquare: public QObject, public QGraphicsItem {
         void set_owner_id(int id){owner_id_ = id;}
         int get_owner_id(){return  owner_id_;}
 
+        SquareType get_square_type(){return type_;}
+
         int get_price(){return price_;}
 
         std::string get_name(){return name_;}
 
         void SetOwner(int owner_id_);
+
+        int CalcualteRent();
 
     private:
         std::string name_;

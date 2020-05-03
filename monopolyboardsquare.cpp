@@ -66,9 +66,14 @@ void MonopolyBoardSquare::paint(QPainter *painter, const QStyleOptionGraphicsIte
 void MonopolyBoardSquare::SetOwner(int id){
     owner_id_ = id;
     if(owner_id_ == 1){
-        square_color_ = QColor(0, 0, 255);
+        square_color_ = QColor(0, 0, 200);
     }
     else if(owner_id_ == 2){
-        square_color_ = QColor(255, 0, 0);
+        square_color_ = QColor(200, 0, 0);
     }
+}
+
+int MonopolyBoardSquare::CalcualteRent(){
+    std::cout << name_ + " " + std::to_string(price_/10) << std::endl;
+    return price_/10;
 }

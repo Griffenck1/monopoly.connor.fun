@@ -33,3 +33,13 @@ void Player::paint(QPainter *painter, const QStyleOptionGraphicsItem *item, QWid
     }
     painter->drawRect(this->boundingRect());
 }
+
+void Player::ReactToLocation(){
+    int location_id = location_->square_->get_owner_id();
+    if(location_->square_->get_square_type() == SquareType::Property){
+        if(((location_id == 1) | (location_id == 2)) & (id_ != location_id))
+        {
+            this->DecrementCash(location_->square_->CalcualteRent());
+        }
+    }
+}
