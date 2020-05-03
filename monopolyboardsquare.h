@@ -29,6 +29,15 @@ class MonopolyBoardSquare: public QObject, public QGraphicsItem {
         int get_x(){return x_;}
         int get_y(){return y_;}
 
+        void set_owner_id(int id){owner_id_ = id;}
+        int get_owner_id(){return  owner_id_;}
+
+        int get_price(){return price_;}
+
+        std::string get_name(){return name_;}
+
+        void SetOwner(int owner_id_);
+
     private:
         std::string name_;
         bool image_exists_;
@@ -37,8 +46,9 @@ class MonopolyBoardSquare: public QObject, public QGraphicsItem {
         int x_;
         int y_;
         int price_;
-        int owner_;
-        QColor color_;
+        //0 for no owner, 1 for player 1, 2 for player 2, 3 for not ownable
+        int owner_id_;
+        QColor square_color_;
 };
 
 #endif // MONOPOLYBOARDSQAURE_H

@@ -28,7 +28,13 @@ class Player : public QObject, public QGraphicsItem{
 
         int get_cash(){return cash_;}
 
+        void DecrementCash(int amount ){cash_ -= amount;}
+
+        int get_id(){return id_;}
+
         void setLocation(Node* n){location_ = n;}
+
+        Node* get_location(){return location_;}
 
     private:
         Node* location_;

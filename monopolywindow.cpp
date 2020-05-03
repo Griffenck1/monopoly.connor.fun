@@ -90,3 +90,17 @@ void MonopolyWindow::SetCashLabels(){
     ui->player1CashLabel->setText(qs1);
     ui->player2CashLabel->setText(qs2);
 }
+
+void MonopolyWindow::on_buyButton_pressed(){
+    Player *current = board_->get_players()[current_player_id_ - 1];
+    if(current->get_location()->square_->get_owner_id() == 0){
+        current->get_location()->square_->SetOwner(current_player_id_);
+        board_->update();
+        current->DecrementCash(current->get_location()->square_->get_price());
+        SetCashLabels();
+    }
+    else{
+
+    }
+}
+

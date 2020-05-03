@@ -8,8 +8,9 @@ MonopolyBoardSquare::MonopolyBoardSquare(int x, int y, std::string name, int pri
     type_ = SquareType::Property;
     image_exists_ = false;
     name_ = name;
-    color_ = QColor(255,255,255);
+    square_color_ = QColor(255,255,255);
     price_ = price;
+    owner_id_ = 0;
 }
 
 MonopolyBoardSquare::MonopolyBoardSquare(int x, int y, SquareType type, QImage image){
@@ -18,7 +19,8 @@ MonopolyBoardSquare::MonopolyBoardSquare(int x, int y, SquareType type, QImage i
     type_ = type;
     image_ = image;
     image_exists_ = true;
-    color_ = QColor(255,255,255);
+    square_color_ = QColor(255,255,255);
+    owner_id_ = 3;
 }
 
 QRectF MonopolyBoardSquare::boundingRect() const{
@@ -55,8 +57,18 @@ void MonopolyBoardSquare::paint(QPainter *painter, const QStyleOptionGraphicsIte
         painter->drawText(x_ + 10, y_ + 10, this->boundingRect().width(), 50, NULL, qs);
         qs = ("$"+std::to_string(price_)).c_str();
         painter->drawText(x_ + 10, y_ + 75, this->boundingRect().width(), 50, NULL, qs);
-        painter->setBrush(QBrush(color_));
-        painter->setPen(color_);
+        painter->setBrush(QBrush(square_color_));
+        painter->setPen(square_color_);
         painter->drawRect(x_, y_+100, 123, 23);
+    }
+}
+
+void MonopolyBoardSquare::SetOwner(int id){
+    owner_id_ = id;
+    if(owner_id_ == 1){
+        square_color_ = QColor(0, 0, 255);
+    }
+    else if(owner_id_ == 2){
+        square_color_ = QColor(255, 0, 0);
     }
 }

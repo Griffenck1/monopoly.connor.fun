@@ -21,6 +21,7 @@ private slots:
     void RollDiceHelper();
     void on_endTurnButton_pressed();
     void SetCashLabels();
+    void on_buyButton_pressed();
 
 private:
     Ui::MonopolyWindow *ui;
