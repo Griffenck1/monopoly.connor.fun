@@ -2,6 +2,8 @@
 
 MonopolyBoard::MonopolyBoard()
 {
+    game_over_ = false;
+
     std::string filename = "/home/griffen/Programming/CSCI_3010/HW5/monopoly.connor.fun/images/Go.bmp";
     QString qs = filename.c_str();
     QImage go = QImage(qs);
@@ -76,11 +78,29 @@ QPainterPath MonopolyBoard::shape() const{
 
 void MonopolyBoard::paint(QPainter *painter, const QStyleOptionGraphicsItem *item, QWidget *widget){
     Q_UNUSED(widget);
-
-    std::string filename = "/home/griffen/Programming/CSCI_3010/HW5/monopoly.connor.fun/images/MonopolyBoardFace.bmp";
-    QString qs = filename.c_str();
-    QImage board_face = QImage(qs);
-    painter->drawImage(QRect(125, 125, 625, 625), board_face);
+    if(game_over_){
+        std::string filename = "/home/griffen/Programming/CSCI_3010/HW5/monopoly.connor.fun/images/MonopolyBoardFace.bmp";
+        QString qs = filename.c_str();
+        QImage board_face = QImage(qs);
+        painter->drawImage(QRect(125, 125, 625, 625), board_face);
+    }
+    else{
+        std::string filename = "/home/griffen/Programming/CSCI_3010/HW5/monopoly.connor.fun/images/Victory.bmp";
+        QString qs = filename.c_str();
+        QImage board_face = QImage(qs);
+        painter->drawImage(QRect(125, 125, 625, 625), board_face);
+        std::string s;
+        if(players_[0]->get_cash() > players_[1]->get_cash()){
+            s = "1";
+            painter->setPen(QColor(0, 0 , 255));
+        }
+        else{
+            s = "2";
+            painter->setPen(QColor(255, 0 , 0));
+        }
+        qs = s.c_str();
+        painter->drawText(560, 150, 100, 100, NULL, qs);
+    }
 
     Node* current = board_squares_head_;
     for(int i = 0; i < 24; i++){

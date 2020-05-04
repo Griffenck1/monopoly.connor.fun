@@ -49,10 +49,8 @@ void MonopolyWindow::RollDiceHelper(){
 
 void MonopolyWindow::on_rollDiceButton_clicked(){
     if(can_roll_ == true){
-        int d1 = 1;
-        int d2 = 2;
-        //int d1 = rand() % 6 + 1;
-        //int d2 = rand() % 6 + 1;
+        int d1 = rand() % 6 + 1;
+        int d2 = rand() % 6 + 1;
         int sum = d1+d2;
 
         std::string s = std::to_string(d1) + "+" + std::to_string(d2) + "=" + std::to_string(sum);
@@ -86,9 +84,14 @@ void MonopolyWindow::on_endTurnButton_pressed(){
     QString qs = NULL;
     ui->rollDiceLabel->setText(NULL);
     if(board_->get_players()[current_player_id_-1]->get_cash() < 0){
-        //delete board_;
+        board_->GameOver();
+        board_->update();
+        ui->goFloridaButton->deleteLater();
+        ui->rollDiceButton->deleteLater();
+        ui->endTurnButton->deleteLater();
+        ui->buyButton->deleteLater();
     }
-    if(current_player_id_ == 1){
+    else if(current_player_id_ == 1){
         current_player_id_ = 2;
         can_roll_ = true;
     }

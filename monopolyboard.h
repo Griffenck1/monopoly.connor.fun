@@ -17,6 +17,8 @@ class MonopolyBoard: public QObject, public QGraphicsItem {
 
         std::vector<Player*> get_players(){return players_;}
 
+        void GameOver(){game_over_ = true;}
+
     private:
         //Locations names is made a global variable for ease of access
         const std::string location_names_[16] = {
@@ -35,6 +37,8 @@ class MonopolyBoard: public QObject, public QGraphicsItem {
         Node* board_squares_head_;
 
         std::vector<Player*> players_;
+
+        bool game_over_;
 };
 
 #endif // MONOPOLYBOARD_H

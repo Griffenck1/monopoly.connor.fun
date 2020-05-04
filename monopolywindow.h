@@ -2,7 +2,7 @@
 #define MONOPOLYWINDOW_H
 
 #include <QMainWindow>
-#include "monopolyboard.h"
+#include "building.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MonopolyWindow; }
