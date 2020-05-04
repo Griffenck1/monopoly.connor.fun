@@ -18,6 +18,7 @@ class Player : public QObject, public QGraphicsItem{
 
     public:
         Player(int id, Node* location);
+        Player(Player* p);
 
         QRectF boundingRect() const override;
         QPainterPath shape() const override;
@@ -33,6 +34,7 @@ class Player : public QObject, public QGraphicsItem{
         void IncrementCash(int amount){cash_ += amount;}
 
         int get_id(){return id_;}
+        void set_id(int id){id_ = id;}
 
         void set_other_player(Player* p){other_player_ = p;}
 
@@ -49,6 +51,8 @@ class Player : public QObject, public QGraphicsItem{
         void IncrementOutOfFloridaFreeUses(){out_of_florida_free_uses_ ++;}
 
         int get_out_of_florida_free_uses(){return out_of_florida_free_uses_;}
+
+        Player* clone(){return new Player(this);}
 
     private:
         Player* other_player_;

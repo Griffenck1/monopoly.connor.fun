@@ -26,6 +26,7 @@ private slots:
     void SetLabels();
     void on_goFloridaButton_pressed();
     void on_buyBuildingButton_pressed();
+    void SetWhosTurnLabel();
 
 private:
     Ui::MonopolyWindow *ui;

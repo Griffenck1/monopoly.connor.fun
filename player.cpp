@@ -8,6 +8,14 @@ Player::Player(int id, Node* location){
     out_of_florida_free_uses_ = 0;
 }
 
+Player::Player(Player *p){
+    location_ = p->get_location();
+    id_ = p->get_id();
+    cash_ = p->get_cash();
+    in_florida_ = p->in_florida();
+    out_of_florida_free_uses_ = p->get_out_of_florida_free_uses();
+}
+
 QRectF Player::boundingRect() const{
     int y_drop = 100;
     if(in_florida_ == true){

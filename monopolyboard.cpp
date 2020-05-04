@@ -59,7 +59,9 @@ MonopolyBoard::MonopolyBoard()
     current->next = board_squares_head_;
 
     players_.push_back(new Player(1, board_squares_head_));
-    players_.push_back(new Player(2, board_squares_head_));
+    Player* p2 = players_[0]->clone();
+    p2->set_id(2);
+    players_.push_back(p2);
     players_[0]->set_other_player(players_[1]);
     players_[1]->set_other_player(players_[0]);
 

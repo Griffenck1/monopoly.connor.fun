@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1220</width>
+    <width>1250</width>
     <height>875</height>
    </rect>
   </property>
@@ -570,7 +570,7 @@
     <property name="geometry">
      <rect>
       <x>910</x>
-      <y>560</y>
+      <y>650</y>
       <width>101</width>
       <height>41</height>
      </rect>
@@ -583,7 +583,7 @@
     <property name="geometry">
      <rect>
       <x>910</x>
-      <y>240</y>
+      <y>260</y>
       <width>171</width>
       <height>96</height>
      </rect>
@@ -619,19 +619,6 @@
      </item>
     </layout>
    </widget>
-   <widget class="QLabel" name="turnLabel">
-    <property name="geometry">
-     <rect>
-      <x>910</x>
-      <y>80</y>
-      <width>67</width>
-      <height>17</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
    <widget class="QPushButton" name="buyButton">
     <property name="geometry">
      <rect>
@@ -649,7 +636,7 @@
     <property name="geometry">
      <rect>
       <x>910</x>
-      <y>420</y>
+      <y>410</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -662,7 +649,7 @@
     <property name="geometry">
      <rect>
       <x>1020</x>
-      <y>420</y>
+      <y>400</y>
       <width>191</width>
       <height>41</height>
      </rect>
@@ -675,13 +662,26 @@
     <property name="geometry">
      <rect>
       <x>910</x>
-      <y>640</y>
-      <width>89</width>
-      <height>25</height>
+      <y>570</y>
+      <width>101</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
      <string>Buy Buidling</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="whosTurnLabel">
+    <property name="geometry">
+     <rect>
+      <x>910</x>
+      <y>50</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>

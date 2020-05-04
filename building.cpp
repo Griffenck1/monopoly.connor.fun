@@ -9,10 +9,6 @@ QPainterPath Building::shape() const{
 
 }
 
-void Building::AddToLocationValue(){
-    location_->QuadruplePrice();
-}
-
 int Building::CalculateCost(){
     return(location_->get_price()/2);
 }

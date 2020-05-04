@@ -28,8 +28,7 @@ MonopolyWindow::MonopolyWindow(QWidget *parent)
     monopoly_board_view_->addItem(board_);
 
 
-    SetCashLabels();
-    SetFloridaLabels();
+    SetLabels();
 
 }
 
@@ -90,6 +89,7 @@ void MonopolyWindow::on_endTurnButton_pressed(){
         ui->rollDiceButton->deleteLater();
         ui->endTurnButton->deleteLater();
         ui->buyButton->deleteLater();
+        ui->buyBuildingButton->deleteLater();
     }
     else if(current_player_id_ == 1){
         current_player_id_ = 2;
@@ -136,6 +136,7 @@ void MonopolyWindow::on_buyButton_pressed(){
 void MonopolyWindow::SetLabels(){
     SetCashLabels();
     SetFloridaLabels();
+    SetWhosTurnLabel();
 }
 
 void MonopolyWindow::on_goFloridaButton_pressed(){
@@ -167,4 +168,10 @@ void MonopolyWindow::on_buyBuildingButton_pressed(){
     }
     board_->update();
     SetLabels();
+}
+
+void MonopolyWindow::SetWhosTurnLabel(){
+    std::string s = "Player " + std::to_string(current_player_id_) + "'s" + " turn";
+    QString qs = s.c_str();
+    ui->whosTurnLabel->setText(qs);
 }

@@ -13,8 +13,6 @@ class Building: public QObject, public QGraphicsItem {
 
         virtual void paint(QPainter *painter, const QStyleOptionGraphicsItem *item, QWidget *widget) override;
 
-        virtual void AddToLocationValue();
-
         virtual int CalculateCost();
 
     //protected and not private so it can be inherited
