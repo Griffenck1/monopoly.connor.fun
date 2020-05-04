@@ -671,6 +671,19 @@
      <string/>
     </property>
    </widget>
+   <widget class="QPushButton" name="buyBuildingButton">
+    <property name="geometry">
+     <rect>
+      <x>910</x>
+      <y>640</y>
+      <width>89</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Buy Buidling</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>

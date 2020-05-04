@@ -19,13 +19,13 @@ MonopolyWindow::MonopolyWindow(QWidget *parent)
 
 
     QGraphicsView *monopoly_board_view_local = ui->boardGraphicsView;
-    QGraphicsScene *monopoly_board_view = new QGraphicsScene;
-    monopoly_board_view_local->setScene(monopoly_board_view);
+    monopoly_board_view_ = new QGraphicsScene;
+    monopoly_board_view_local->setScene(monopoly_board_view_);
     monopoly_board_view_local->setSceneRect(0, 0, monopoly_board_view_local->frameSize().width(), monopoly_board_view_local->frameSize().height());
 
     board_ = new MonopolyBoard();
 
-    monopoly_board_view->addItem(board_);
+    monopoly_board_view_->addItem(board_);
 
 
     SetCashLabels();
@@ -145,4 +145,26 @@ void MonopolyWindow::on_goFloridaButton_pressed(){
         current->DecrementOutOfFloridaFreeUses();
     }
     board_->update();
+}
+
+void MonopolyWindow::on_buyBuildingButton_pressed(){
+    Player* current = board_->get_players()[current_player_id_ - 1];
+    if(current->get_location()->square_->get_owner_id() == current->get_id()){
+        if(current->get_location()->square_->get_num_buidlings() == 0){
+            House* house = new House(current->get_location()->square_);
+            current->DecrementCash(house->CalculateCost());
+            current->get_location()->square_->QuadruplePrice();
+            current->get_location()->square_->IncrementNumBuidlings();
+            monopoly_board_view_->addItem(house);
+        }
+        else if(current->get_location()->square_->get_num_buidlings() == 1){
+            Hotel* hotel = new Hotel(current->get_location()->square_);
+            current->DecrementCash(hotel->CalculateCost());
+            current->get_location()->square_->QuadruplePrice();
+            current->get_location()->square_->IncrementNumBuidlings();
+            monopoly_board_view_->addItem(hotel);
+        }
+    }
+    board_->update();
+    SetLabels();
 }

@@ -11,6 +11,7 @@ MonopolyBoardSquare::MonopolyBoardSquare(int x, int y, std::string name, int pri
     square_color_ = QColor(255,255,255);
     price_ = price;
     owner_id_ = 0;
+    num_buildings_ = 0;
 }
 
 MonopolyBoardSquare::MonopolyBoardSquare(int x, int y, SquareType type, QImage image){
@@ -21,6 +22,7 @@ MonopolyBoardSquare::MonopolyBoardSquare(int x, int y, SquareType type, QImage i
     image_exists_ = true;
     square_color_ = QColor(255,255,255);
     owner_id_ = 3;
+    num_buildings_ = 0;
 }
 
 QRectF MonopolyBoardSquare::boundingRect() const{

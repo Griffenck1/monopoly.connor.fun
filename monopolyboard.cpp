@@ -78,7 +78,7 @@ QPainterPath MonopolyBoard::shape() const{
 
 void MonopolyBoard::paint(QPainter *painter, const QStyleOptionGraphicsItem *item, QWidget *widget){
     Q_UNUSED(widget);
-    if(game_over_){
+    if(!game_over_){
         std::string filename = "/home/griffen/Programming/CSCI_3010/HW5/monopoly.connor.fun/images/MonopolyBoardFace.bmp";
         QString qs = filename.c_str();
         QImage board_face = QImage(qs);

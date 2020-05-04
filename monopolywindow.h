@@ -25,11 +25,14 @@ private slots:
     void SetFloridaLabels();
     void SetLabels();
     void on_goFloridaButton_pressed();
+    void on_buyBuildingButton_pressed();
 
 private:
     Ui::MonopolyWindow *ui;
 
     MonopolyBoard *board_;
+
+    QGraphicsScene* monopoly_board_view_;
 
     int moves_to_go_;
     int current_player_id_;
