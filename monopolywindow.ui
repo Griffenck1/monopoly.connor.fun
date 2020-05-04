@@ -597,7 +597,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="goFloridap2LAbel">
+      <widget class="QLabel" name="goFloridap2Label">
        <property name="text">
         <string>Player 1:</string>
        </property>
@@ -611,7 +611,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="gofloridaButton">
+      <widget class="QPushButton" name="goFloridaButton">
        <property name="text">
         <string>Get out of Florida</string>
        </property>

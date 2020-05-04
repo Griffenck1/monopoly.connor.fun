@@ -23,7 +23,7 @@ MonopolyBoard::MonopolyBoard()
             filename = "/home/griffen/Programming/CSCI_3010/HW5/monopoly.connor.fun/images/GetOutFlorida.bmp";
             qs = filename.c_str();
             QImage go_florida = QImage(qs);
-            current->next = new Node(new MonopolyBoardSquare(board_placements_[i].first, board_placements_[i].second, SquareType::Florida, go_florida));
+            current->next = new Node(new MonopolyBoardSquare(board_placements_[i].first, board_placements_[i].second, SquareType::GetOutOfFloridaFree, go_florida));
             current = current->next;
         }
         else if(i == 6){
@@ -56,10 +56,10 @@ MonopolyBoard::MonopolyBoard()
 
     current->next = board_squares_head_;
 
-    players_.push_back(new Player(1));
-    players_.push_back(new Player(2));
-    players_[0]->setLocation(board_squares_head_);
-    players_[1]->setLocation(board_squares_head_);
+    players_.push_back(new Player(1, board_squares_head_));
+    players_.push_back(new Player(2, board_squares_head_));
+    players_[0]->set_other_player(players_[1]);
+    players_[1]->set_other_player(players_[0]);
 
 
 }

@@ -22,6 +22,9 @@ private slots:
     void on_endTurnButton_pressed();
     void SetCashLabels();
     void on_buyButton_pressed();
+    void SetFloridaLabels();
+    void SetLabels();
+    void on_goFloridaButton_pressed();
 
 private:
     Ui::MonopolyWindow *ui;

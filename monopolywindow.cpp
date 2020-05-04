@@ -29,6 +29,8 @@ MonopolyWindow::MonopolyWindow(QWidget *parent)
 
 
     SetCashLabels();
+    SetFloridaLabels();
+
 }
 
 MonopolyWindow::~MonopolyWindow()
@@ -39,17 +41,18 @@ MonopolyWindow::~MonopolyWindow()
 void MonopolyWindow::RollDiceHelper(){
     if(moves_to_go_ > 0){
         board_->get_players()[current_player_id_ - 1]->Move();
-        board_->update();
         moves_to_go_--;
         QTimer::singleShot(350, this, SLOT(RollDiceHelper()));
     }
-
+    board_->update();
 }
 
 void MonopolyWindow::on_rollDiceButton_clicked(){
     if(can_roll_ == true){
-        int d1 = rand() % 6 + 1;
-        int d2 = rand() % 6 + 1;
+        int d1 = 1;
+        int d2 = 2;
+        //int d1 = rand() % 6 + 1;
+        //int d2 = rand() % 6 + 1;
         int sum = d1+d2;
 
         std::string s = std::to_string(d1) + "+" + std::to_string(d2) + "=" + std::to_string(sum);
@@ -57,9 +60,16 @@ void MonopolyWindow::on_rollDiceButton_clicked(){
         ui->rollDiceLabel->setText(qs);
 
         moves_to_go_ = sum;
-        RollDiceHelper();
+
         if(d1 != d2){
             can_roll_ = false;
+        }
+        else{
+            board_->get_players()[current_player_id_ - 1]->get_out_of_florida();
+        }
+
+        if(!board_->get_players()[current_player_id_ - 1]->in_florida()){
+            RollDiceHelper();
         }
     }
     else{
@@ -71,7 +81,10 @@ void MonopolyWindow::on_rollDiceButton_clicked(){
 
 void MonopolyWindow::on_endTurnButton_pressed(){
     board_->get_players()[current_player_id_ - 1]->ReactToLocation();
-    SetCashLabels();
+    SetLabels();
+    board_->update();
+    QString qs = NULL;
+    ui->rollDiceLabel->setText(NULL);
     if(board_->get_players()[current_player_id_-1]->get_cash() < 0){
         //delete board_;
     }
@@ -96,6 +109,17 @@ void MonopolyWindow::SetCashLabels(){
     ui->player2CashLabel->setText(qs2);
 }
 
+void MonopolyWindow::SetFloridaLabels(){
+    std::string s1 = "Player 1: " + std::to_string(board_->get_players()[0]->get_out_of_florida_free_uses());
+    std::string s2 = "Player 2: " + std::to_string(board_->get_players()[1]->get_out_of_florida_free_uses());
+
+    QString qs1 = s1.c_str();
+    QString qs2 = s2.c_str();
+
+    ui->goFloridap1Label->setText(qs1);
+    ui->goFloridap2Label->setText(qs2);
+}
+
 void MonopolyWindow::on_buyButton_pressed(){
     Player *current = board_->get_players()[current_player_id_ - 1];
     if(current->get_location()->square_->get_owner_id() == 0){
@@ -106,3 +130,16 @@ void MonopolyWindow::on_buyButton_pressed(){
     }
 }
 
+void MonopolyWindow::SetLabels(){
+    SetCashLabels();
+    SetFloridaLabels();
+}
+
+void MonopolyWindow::on_goFloridaButton_pressed(){
+    Player* current = board_->get_players()[current_player_id_ - 1];
+    if(current->get_out_of_florida_free_uses() > 0){
+        current->get_out_of_florida();
+        current->DecrementOutOfFloridaFreeUses();
+    }
+    board_->update();
+}
