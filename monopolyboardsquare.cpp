@@ -1,7 +1,10 @@
 #include "monopolyboardsquare.h"
 
 
-
+/**
+Cosntructor that takes coordinates, name as a string, and price
+Used for properties
+*/
 MonopolyBoardSquare::MonopolyBoardSquare(int x, int y, std::string name, int price){
     x_ = x;
     y_ = y;
@@ -14,6 +17,10 @@ MonopolyBoardSquare::MonopolyBoardSquare(int x, int y, std::string name, int pri
     num_buildings_ = 0;
 }
 
+/**
+Constructor that takes coordinates, a squaretype, and an image
+Used for non properties
+*/
 MonopolyBoardSquare::MonopolyBoardSquare(int x, int y, SquareType type, QImage image){
     x_ = x;
     y_ = y;
@@ -25,16 +32,25 @@ MonopolyBoardSquare::MonopolyBoardSquare(int x, int y, SquareType type, QImage i
     num_buildings_ = 0;
 }
 
+/**
+Defines the objects bounds
+*/
 QRectF MonopolyBoardSquare::boundingRect() const{
     return QRectF(x_, y_, 125, 125);
 }
 
+/**
+Defines the objects shape
+*/
 QPainterPath MonopolyBoardSquare::shape() const{
     QPainterPath path;
     path.addRect(this->boundingRect());
     return path;
 }
 
+/**
+Paints the square
+*/
 void MonopolyBoardSquare::paint(QPainter *painter, const QStyleOptionGraphicsItem *item, QWidget *widget){
     Q_UNUSED(widget);
 
@@ -65,6 +81,10 @@ void MonopolyBoardSquare::paint(QPainter *painter, const QStyleOptionGraphicsIte
     }
 }
 
+/**
+Changes the bottom color of the square to coordinate with the owners color
+Useful for when soemone buys a square
+*/
 void MonopolyBoardSquare::SetOwner(int id){
     owner_id_ = id;
     if(owner_id_ == 1){
@@ -75,6 +95,10 @@ void MonopolyBoardSquare::SetOwner(int id){
     }
 }
 
+/**
+Calculates the rent from a square
+rent is 1/10th of the squares value
+*/
 int MonopolyBoardSquare::CalcualteRent(){
     std::cout << name_ + " " + std::to_string(price_/10) << std::endl;
     return price_/10;

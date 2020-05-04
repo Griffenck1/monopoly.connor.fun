@@ -4,6 +4,9 @@
 
 #include "monopolyboardsquare.h"
 
+/**
+The Node Struct handles the interface between the player and the location for the linked list
+*/
 struct Node{
     Node(MonopolyBoardSquare* square){
         square_ = square;
@@ -27,6 +30,8 @@ class Player : public QObject, public QGraphicsItem{
 
         int get_cash(){return cash_;}
 
+        int get_out_of_florida_free_uses(){return out_of_florida_free_uses_;}
+
         void Move();
 
         void DecrementCash(int amount){cash_ -= amount;}
@@ -40,9 +45,10 @@ class Player : public QObject, public QGraphicsItem{
 
         Node* get_location(){return location_;}
 
-        void ReactToLocation();
-
+        //returns true if you are in florida, false if you are not
         bool in_florida(){return in_florida_;}
+
+        void ReactToLocation();
 
         void get_out_of_florida(){in_florida_ = false;}
 
@@ -50,8 +56,8 @@ class Player : public QObject, public QGraphicsItem{
 
         void IncrementOutOfFloridaFreeUses(){out_of_florida_free_uses_ ++;}
 
-        int get_out_of_florida_free_uses(){return out_of_florida_free_uses_;}
 
+        //Clone method used to make player 2
         Player* clone(){return new Player(this);}
 
     private:

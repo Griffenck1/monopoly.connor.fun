@@ -13,6 +13,9 @@
 #include <stdlib.h>
 #include <time.h>
 
+/**
+This enum class helps us to quickly understand what kind of square each square is
+*/
 enum class SquareType { Go, Property, StudentDebt, GetOutOfFloridaFree, Florida, GoToFlorida, SegFault };
 
 class MonopolyBoardSquare: public QObject, public QGraphicsItem {
@@ -26,25 +29,27 @@ class MonopolyBoardSquare: public QObject, public QGraphicsItem {
 
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *item, QWidget *widget) override;
 
+        //Inline getter and setter functions
         int get_x(){return x_;}
         int get_y(){return y_;}
 
-        void set_owner_id(int id){owner_id_ = id;}
         int get_owner_id(){return  owner_id_;}
-
-        SquareType get_square_type(){return type_;}
+        void set_owner_id(int id){owner_id_ = id;}
 
         int get_price(){return price_;}
 
-        void QuadruplePrice(){price_ *= 4;}
-
         std::string get_name(){return name_;}
+
+        SquareType get_square_type(){return type_;}
+
+        int get_num_buidlings(){return num_buildings_;}
+
+        //Inline function quadruples the price of the square, useful for when a buidling is built
+        void QuadruplePrice(){price_ *= 4;}
 
         void SetOwner(int owner_id_);
 
         int CalcualteRent();
-
-        int get_num_buidlings(){return num_buildings_;}
 
         void IncrementNumBuidlings(){num_buildings_++;}
 

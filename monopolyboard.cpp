@@ -1,19 +1,24 @@
 #include "monopolyboard.h"
 
+/**
+Constructor for monopoly board
+*/
 MonopolyBoard::MonopolyBoard()
 {
     game_over_ = false;
 
+    //starts by loding in the Go tile
     std::string filename = "/home/griffen/Programming/CSCI_3010/HW5/monopoly.connor.fun/images/Go.bmp";
     QString qs = filename.c_str();
     QImage go = QImage(qs);
 
+    //makes the Go Tile the head of the linked list
     board_squares_head_ = new Node(new MonopolyBoardSquare(750, 750, SquareType::Go, go));
 
+    //The following goes through each space and loads in the appropriate tile int the appropriate location
     int names_used = 0;
     Node* current = board_squares_head_;
     for(int i = 1; i < 24; i++){
-        //It just so happens that all of my squares requiring images are divisible by 3
         if((i == 3) | (i == 15)){
             filename = "/home/griffen/Programming/CSCI_3010/HW5/monopoly.connor.fun/images/StudentDebt.bmp";
             qs = filename.c_str();
@@ -56,8 +61,10 @@ MonopolyBoard::MonopolyBoard()
         }
     }
 
+    //makes the head tail of the linked list connect back to the head
     current->next = board_squares_head_;
 
+    //Creates players and enters them into vector
     players_.push_back(new Player(1, board_squares_head_));
     Player* p2 = players_[0]->clone();
     p2->set_id(2);
@@ -68,18 +75,28 @@ MonopolyBoard::MonopolyBoard()
 
 }
 
+/**
+Defines the bounds of the board
+*/
 QRectF MonopolyBoard::boundingRect() const{
     return(QRectF(0, 0, 875, 875));
 }
 
+/**
+Defines the shape of the board
+*/
 QPainterPath MonopolyBoard::shape() const{
     QPainterPath path;
     path.addRect(this->boundingRect());
     return path;
 }
 
+/**
+Paints the board
+*/
 void MonopolyBoard::paint(QPainter *painter, const QStyleOptionGraphicsItem *item, QWidget *widget){
     Q_UNUSED(widget);
+    //Changes board face when game is over
     if(!game_over_){
         std::string filename = "/home/griffen/Programming/CSCI_3010/HW5/monopoly.connor.fun/images/MonopolyBoardFace.bmp";
         QString qs = filename.c_str();
@@ -104,6 +121,7 @@ void MonopolyBoard::paint(QPainter *painter, const QStyleOptionGraphicsItem *ite
         painter->drawText(560, 150, 100, 100, NULL, qs);
     }
 
+    //this paints the board in a cascading manner by cycling through the elements held in the linked list, and calling on them to paint themselves
     Node* current = board_squares_head_;
     for(int i = 0; i < 24; i++){
         current->square_->paint(painter, item, widget);

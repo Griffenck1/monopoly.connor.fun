@@ -15,8 +15,10 @@ class MonopolyBoard: public QObject, public QGraphicsItem {
 
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *item, QWidget *widget) override;
 
+        //inline getter function
         std::vector<Player*> get_players(){return players_;}
 
+        //inline function to declare a game over state
         void GameOver(){game_over_ = true;}
 
     private:
@@ -34,6 +36,7 @@ class MonopolyBoard: public QObject, public QGraphicsItem {
             {750, 125}, {750, 250}, {750, 375}, {750, 500}, {750, 625}
         };
 
+        //Head of the linked list holding all MonopolyBoardSquares
         Node* board_squares_head_;
 
         std::vector<Player*> players_;

@@ -537,7 +537,7 @@
     <property name="geometry">
      <rect>
       <x>910</x>
-      <y>130</y>
+      <y>230</y>
       <width>160</width>
       <height>80</height>
      </rect>
@@ -570,7 +570,7 @@
     <property name="geometry">
      <rect>
       <x>910</x>
-      <y>650</y>
+      <y>750</y>
       <width>101</width>
       <height>41</height>
      </rect>
@@ -583,7 +583,7 @@
     <property name="geometry">
      <rect>
       <x>910</x>
-      <y>260</y>
+      <y>360</y>
       <width>171</width>
       <height>96</height>
      </rect>
@@ -623,7 +623,7 @@
     <property name="geometry">
      <rect>
       <x>910</x>
-      <y>490</y>
+      <y>580</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -636,7 +636,7 @@
     <property name="geometry">
      <rect>
       <x>910</x>
-      <y>410</y>
+      <y>510</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -649,7 +649,7 @@
     <property name="geometry">
      <rect>
       <x>1020</x>
-      <y>400</y>
+      <y>500</y>
       <width>191</width>
       <height>41</height>
      </rect>
@@ -662,7 +662,7 @@
     <property name="geometry">
      <rect>
       <x>910</x>
-      <y>570</y>
+      <y>670</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -675,13 +675,39 @@
     <property name="geometry">
      <rect>
       <x>910</x>
-      <y>50</y>
+      <y>30</y>
       <width>161</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>910</x>
+      <y>130</y>
+      <width>311</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Building cost = 1/2 price of square</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>910</x>
+      <y>160</y>
+      <width>251</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Rent cost = 1/10 prioce of square</string>
     </property>
    </widget>
   </widget>
